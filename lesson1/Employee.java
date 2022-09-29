@@ -44,8 +44,8 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Сотрудник по имени и фамилии "  + name +
+        return "РЎРѕС‚СЂСѓРґРЅРёРє РїРѕ РёРјРµРЅРё Рё С„Р°РјРёР»РёРё "  + name +
                 " " + surname +
-                ", имеет годовую зарплату " + salary;
+                "РёРјРµРµС‚ РіРѕРґРѕРІСѓСЋ Р·Р°СЂРїР»Р°С‚Сѓ " + salary;
     }
 }
