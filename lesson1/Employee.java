@@ -46,6 +46,6 @@ public class Employee {
     public String toString() {
         return "Сотрудник по имени и фамилии "  + name +
                 " " + surname +
-                "имеет годовую зарплату " + salary;
+                " имеет годовую зарплату " + salary;
     }
 }
