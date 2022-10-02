@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Basket {
-    private List<Good> goodsInBasket; //в условии массив, но корзина все-такие весьма динамичная штука, заменила на лист
+    private List<Good> goodsInBasket; //РІ СѓСЃР»РѕРІРёРё РјР°СЃСЃРёРІ, РЅРѕ РєРѕСЂР·РёРЅР° РІСЃРµ-С‚Р°РєРёРµ РІРµСЃСЊРјР° РґРёРЅР°РјРёС‡РЅР°СЏ С€С‚СѓРєР°, Р·Р°РјРµРЅРёР»Р° РЅР° Р»РёСЃС‚
 
     public Basket() {
         goodsInBasket = new ArrayList<>();
