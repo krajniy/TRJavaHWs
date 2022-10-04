@@ -5,6 +5,12 @@ public abstract class Clothes {
     private String color;
     private double price;
 
+    public Clothes(ClothesSize size, String color, double price) {
+        this.size = size;
+        this.color = color;
+        this.price = price;
+    }
+
     public ClothesSize getSize() {
         return size;
     }
