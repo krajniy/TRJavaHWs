@@ -37,7 +37,7 @@ public enum Seasons {
 
         for (Seasons s : seasons) {
             System.out.println(s.name());
-            System.out.println(s.averageTemp);
+            System.out.println("Average temp is " + s.averageTemp + " degrees");
             System.out.println(s.getDescription());
         }
     }

@@ -11,6 +11,7 @@ public class Studio {
         for (Clothes clothes1 : clothes){
             if (clothes1 instanceof WomenClothes){
                 System.out.println(clothes1);
+                ((WomenClothes) clothes1).dressWomen();
             }
         }
 
@@ -19,6 +20,7 @@ public class Studio {
         for (Clothes clothes1 : clothes){
             if (clothes1 instanceof MenClothes){
                 System.out.println(clothes1);
+                ((MenClothes) clothes1).dressMen();
             }
         }
 

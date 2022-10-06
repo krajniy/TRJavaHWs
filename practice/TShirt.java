@@ -9,11 +9,13 @@ public class TShirt extends Clothes implements MenClothes, WomenClothes{
 
     @Override
     public void dressMen() {
+        System.out.println("Man now wears a t-shirt");
 
     }
 
     @Override
     public void dressWomen() {
+        System.out.println("Woman now wears a t-shirt");
 
     }
 }
