@@ -5,8 +5,15 @@ public enum Size {
     MEDIUM,
     LARGE,
     EXTRALARGE;
+}
+class Test{
+    Size pizzaSize;
 
-    public void orderPizza(Size size){
+    public Test(Size pizzaSize) {
+        this.pizzaSize = pizzaSize;
+    }
+
+    public static void orderPizza(Size size){
         switch (size){
             case LARGE -> System.out.println("You ordered large pizza");
             case SMALL -> System.out.println("You ordered small pizza");
@@ -18,12 +25,15 @@ public enum Size {
     public static void main(String[] args) {
         System.out.println(Size.SMALL);
         System.out.println(Size.LARGE);
-        for (Size size : Size.values()){
+        for (Size size : Size.values()) {
             Size newSize = size;
             System.out.println(newSize);
 
-
+            Test test = new Test(Size.MEDIUM);
+            Test.orderPizza(Size.MEDIUM);
         }
+
+
 
 
     }
