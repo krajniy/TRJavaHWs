@@ -6,7 +6,7 @@ public class Main {
         System.out.println(ArithmeticMean.arithmeticMean(array));
 
         HowMany howMany = new HowMany();
-        howMany.scan(); // Напишите программу HowMany.java, которая определит, сколько слов Вы ввели с консоли // 11
+        howMany.scan(); // РќР°РїРёС€РёС‚Рµ РїСЂРѕРіСЂР°РјРјСѓ HowMany.java, РєРѕС‚РѕСЂР°СЏ РѕРїСЂРµРґРµР»РёС‚, СЃРєРѕР»СЊРєРѕ СЃР»РѕРІ Р’С‹ РІРІРµР»Рё СЃ РєРѕРЅСЃРѕР»Рё // 11
 
 
     }
