@@ -9,8 +9,8 @@ public class Demo {
                 new Book("Pushkin", "Eugene Onegin"),
                 new Book("Jois", "Ulysses")));
 
-        bookList.printAll();
-        bookList.removeBook(0);
+//        bookList.printAll();
+        bookList.removeBook("War and Peace");
         bookList.printAll();
 
 

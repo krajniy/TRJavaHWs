@@ -18,6 +18,15 @@ public class BookList {
     public void removeBook(int ind){
         books.remove(ind);
     }
+    public void removeBook(String name){
+        for (int i = 0; i < books.size(); i++) {
+        if (name.equals(books.get(i).getTitle())){
+            books.remove(books.get(i));
+            return;
+            }
+
+        }
+    }
 
     public void printAll(){
         books.forEach(System.out::println);
