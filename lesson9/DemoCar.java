@@ -8,10 +8,10 @@ public class DemoCar {
         Car car3 = new Car("Audi", 300);
 
 
-        System.out.println(car1.equals(car));
-        System.out.println(car2.equals(car));
-        System.out.println(car1.equals(car2));
-        System.out.println(car.equals(car3));
+        System.out.println(car1.equals(car)); //false
+        System.out.println(car2.equals(car));//false
+        System.out.println(car1.equals(car2));//false
+        System.out.println(car.equals(car3));//true
 
     }
 }
