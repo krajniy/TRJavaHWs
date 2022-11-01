@@ -20,7 +20,7 @@ public class User implements Comparable<User> {
 
     @Override
     public int compareTo(User o) {
-        if (!this.getName().equals(o.getName())){
+        if (this.getName().equals(o.getName())){
             return this.getAge()-o.getAge();
         } else {
             return this.getName().compareTo(o.getName());
