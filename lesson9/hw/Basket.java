@@ -17,17 +17,24 @@ public class Basket {
         this.itemsInBasket.add(item);
     }
 
-    public void buyAll(){
+    public boolean buyAll(){
+        if (itemsInBasket.isEmpty()){
+            System.out.println("Nothing in basket!");
+            return false;
+        } else {
+
         double totalCost = 0;
         for (Item item : itemsInBasket){
             totalCost += item.getPrice();
         }
-        System.out.println("Your paid: " + totalCost);
+        System.out.println("You have paid: " + totalCost);
         System.out.println("You have bought: ");
         for (Item item : itemsInBasket){
             System.out.println(item.getName());
         }
         itemsInBasket.clear();
+        return true;
+        }
     }
 
     @Override

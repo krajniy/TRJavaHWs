@@ -1,9 +1,10 @@
 package TRJavaHWs.lesson9.hw;
 
+import javax.naming.AuthenticationException;
 import java.util.List;
 
 public class DemoShop {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws AuthenticationException {
         Category shampoos = new Category(List.of(
                 new Item("Wella", 24.47, 4.7),
                 new Item("Pantene Pro-V", 3.45, 4.7),
