@@ -47,11 +47,13 @@ public class PracticeMap {
         }
 
             while (tickets.containsKey(start) && start!=null){
-                sb.append(start).append("->");
-                sb.append(tickets.get(start)).append(" ");
+                sb.append(start).append("->").append(tickets.get(start)).append(" ");
 
                 result = tickets.get(start);
                 start = tickets.get(result);
+                sb.append(result).append("->").append(start).append(" ");
+
+
 
             }
 
