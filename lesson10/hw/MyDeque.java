@@ -2,7 +2,7 @@ package TRJavaHWs.lesson10.hw;
 
 import java.util.*;
 
-public class MyDeque<E> extends ArrayList implements Deque {
+public class MyDeque extends ArrayList implements Deque {
     /*
     Разработать реализацию интерфейса Deque на основе ArrayList
     (public class MyDeque extends ArrayList implements Deque)
