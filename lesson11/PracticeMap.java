@@ -32,33 +32,29 @@ public class PracticeMap {
         System.out.println(findWay(start, tickets));
 
 
-
     }
-    public static String findWay (String start, Map<String, String> tickets){
+
+    public static String findWay(String start, Map<String, String> tickets) {
         StringBuilder sb = new StringBuilder();
         String result;
-        if (!tickets.containsKey(start)){
+        if (!tickets.containsKey(start)) {
 
             return "Stay at home";
         }
-        if ( tickets.get(start)==null){
-            sb.append(start);
-            return sb.toString();
-        }
+//        if ( tickets.get(start)==null){
+//            sb.append(start);
+//            return sb.toString();
+//        }
 
-            while (tickets.containsKey(start) && start!=null){
-                sb.append(start).append("->").append(tickets.get(start)).append(" ");
-
-                result = tickets.get(start);
-                start = tickets.get(result);
-                if (tickets.get(start)!=null){
-
-                sb.append(result).append("->").append(start).append(" ");
-                }
-
-
-
+        while (tickets.containsKey(start) && start != null) {
+            if (!sb.isEmpty()) {
+                sb.append(",");
             }
+            sb.append(start).append("->").append(tickets.get(start)).append(" ");
+            start = tickets.get(start);
+
+
+        }
 
         return sb.toString();
 
