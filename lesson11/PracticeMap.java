@@ -35,15 +35,27 @@ public class PracticeMap {
 
     }
     public static String findWay (String start, Map<String, String> tickets){
+        StringBuilder sb = new StringBuilder();
         String result = "";
         if (!tickets.containsKey(start)){
-            return "Stay home";
+            sb.append(start);
+            return sb.toString();
         }
-        while (tickets.containsKey(start) && start!=null){
-            result = tickets.get(start);
-            start = tickets.get(result);
+        if ( tickets.get(start)==null){
+            sb.append(start);
+            return sb.toString();
         }
-        return "End of destination: " + result;
+
+            while (tickets.containsKey(start) && start!=null){
+                sb.append(start).append("->");
+                sb.append(tickets.get(start)).append(" ");
+
+                result = tickets.get(start);
+                start = tickets.get(result);
+
+            }
+
+        return sb.toString();
 
     }
 }
