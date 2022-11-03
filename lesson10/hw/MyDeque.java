@@ -2,51 +2,57 @@ package TRJavaHWs.lesson10.hw;
 
 import java.util.*;
 
-public class MyDeque extends ArrayList implements Deque {
+public class MyDeque<E> extends ArrayList implements Deque {
     /*
     Разработать реализацию интерфейса Deque на основе ArrayList
     (public class MyDeque extends ArrayList implements Deque)
     */
 
-    private ArrayList<Object> list;
 
     public MyDeque() {
-        list = new ArrayList<>();
+        super();
     }
 
 
     @Override
     public void addFirst(Object o) {
-        list.add(0, o);
-
+            super.add(0, o);
     }
 
     @Override
     public void addLast(Object o) {
-        list.add(o);
+        super.add(o);
 
     }
 
     @Override
     public boolean offerFirst(Object o) {
-          list.add(0, o);
+        super.add(0, o);
         return true;
     }
 
     @Override
     public boolean offerLast(Object o) {
-        list.add(list.size() - 1, o);
+        if (this.isEmpty()){
+            super.add(0);
+        } else
+            super.add(this.size() - 1, o);
         return true;
     }
 
     @Override
     public Object removeFirst() {
-        return list.remove(0);
+        return super.remove(0);
     }
 
     @Override
     public Object removeLast() {
-        return list.remove(list.size() - 1);
+        if (this.size()>0){
+            Object o = this.get(this.size() - 1);
+            super.remove(this.size() - 1);
+            return o;
+        } else throw new IndexOutOfBoundsException();
+
     }
 
     @Override
@@ -65,12 +71,20 @@ public class MyDeque extends ArrayList implements Deque {
 
     @Override
     public Object getFirst() {
-        return list.get(0);
+        return super.get(0);
     }
 
     @Override
     public Object getLast() {
-        return list.get(list.size() - 1);
+        Object o;
+        if (this.isEmpty()){
+            o = super.get(0);
+            super.get(0);
+        } else{
+            o = super.size()-1;
+            super.get(super.size() - 1);}
+        return o;
+
     }
 
     @Override
@@ -85,14 +99,14 @@ public class MyDeque extends ArrayList implements Deque {
 
     @Override
     public boolean removeFirstOccurrence(Object o) {
-        return list.remove(o);
+        return super.remove(o);
     }
 
     @Override
     public boolean removeLastOccurrence(Object o) {
-        int lastIndex = list.lastIndexOf(o);
+        int lastIndex = super.lastIndexOf(o);
         if (lastIndex >= 0) {
-            list.remove(lastIndex);
+            super.remove(lastIndex);
             return true;
         }
         return false;
@@ -105,7 +119,7 @@ public class MyDeque extends ArrayList implements Deque {
 
     @Override
     public Object remove() {
-        return removeFirst();
+        return super.remove(0);
     }
 
     @Override

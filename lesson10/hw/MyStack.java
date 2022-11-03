@@ -13,6 +13,8 @@ public class MyStack <E> {
     private int size = 0;
     private Object [] array;
     private int defaultCapacity = 10;
+    private final double GROWTH_THRESHOLD = .75;
+    private final int GROWTH = 2;
 
 
 
@@ -34,7 +36,7 @@ public class MyStack <E> {
     }
 
     public void push(E e){
-        if (size == array.length){
+        if (size >= array.length-GROWTH_THRESHOLD){
             enlargeCapacity();
         }
         array[size] = e;
@@ -48,14 +50,17 @@ public class MyStack <E> {
         return e;
     }
 
-    public E peak(){
+    public E peek(){
 
         return (E) array[size-1];
     }
 
     private void enlargeCapacity(){
-        int newCapacity = array.length * 2 +1;
-        array = Arrays.copyOf(array, newCapacity);
+        defaultCapacity = defaultCapacity*GROWTH+1;
+        Object[] copy = new Object[defaultCapacity];
+        System.arraycopy(array, 0, copy,  0, array.length);
+        array = copy;
+
     }
 
     public int size(){

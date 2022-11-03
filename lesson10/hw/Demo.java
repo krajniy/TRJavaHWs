@@ -1,7 +1,5 @@
 package TRJavaHWs.lesson10.hw;
 
-import TRJavaHWs.lesson9.hw.Item;
-
 import java.util.Iterator;
 
 public class Demo {
@@ -14,7 +12,7 @@ public class Demo {
      */
 
     public static void main(String[] args) {
-        MyStack stack = new MyStack<>();
+        MyStack<Integer> stack = new MyStack<>();
         stack.push(0);
         stack.push(1);
         stack.push(2);
@@ -24,23 +22,54 @@ public class Demo {
         System.out.println(stack);
         System.out.println(stack.pop());
         System.out.println(stack);
-        System.out.println(stack.peak());
+        System.out.println(stack.peek());
         stack.push(77);
         System.out.println(stack);
         System.out.println(stack.size());
 
         MyDeque deque = new MyDeque();
-        deque.add(5);
-        deque.add(4);
-        deque.add(7);
-        deque.add(9);
-        deque.add(10);
+        deque.addFirst(5);
+        deque.addFirst(4);
+        deque.addFirst(7);
+        deque.addFirst(9);
+        deque.addFirst(10);
+        deque.addLast(8);
+        deque.addFirst(8);
         deque.add(8);
+        deque.offerFirst(17);
+        deque.offerLast(8);
 
         Iterator iterator = deque.descendingIterator();
         while (iterator.hasNext()){
             System.out.println(iterator.next());
         }
+        System.out.println("Size: "+ deque.size());
+        System.out.println(deque.peek());
+        System.out.println(deque.getLast());
+        System.out.println(deque.peekLast());
+        System.out.println(deque.offer(59));
+        System.out.println(deque.remove());
+        System.out.println(deque.removeFirst());
+        System.out.println(deque.removeLast());
+        System.out.println(deque.poll());
+        System.out.println(deque.poll());
+        System.out.println(deque.pollLast());
+        System.out.println(deque.pollFirst());
+        System.out.println(deque.element());
+        System.out.println(deque.pop());
+        System.out.println(deque);
+        System.out.println(deque.removeLastOccurrence(8));
+        System.out.println(deque.removeFirstOccurrence(8));
+
+
+
+
+
+
+
+
+
+
 
     }
 }
