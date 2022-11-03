@@ -36,10 +36,10 @@ public class PracticeMap {
     }
     public static String findWay (String start, Map<String, String> tickets){
         StringBuilder sb = new StringBuilder();
-        String result = "";
+        String result;
         if (!tickets.containsKey(start)){
-            sb.append(start);
-            return sb.toString();
+
+            return "Stay at home";
         }
         if ( tickets.get(start)==null){
             sb.append(start);
@@ -51,7 +51,10 @@ public class PracticeMap {
 
                 result = tickets.get(start);
                 start = tickets.get(result);
+                if (tickets.get(start)!=null){
+
                 sb.append(result).append("->").append(start).append(" ");
+                }
 
 
 
