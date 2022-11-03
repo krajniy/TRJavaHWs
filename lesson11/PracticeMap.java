@@ -1,0 +1,49 @@
+package TRJavaHWs.lesson11;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class PracticeMap {
+    public static void main(String[] args) {
+        /*
+        Найти маршрут из заданного списка билетов
+    Учитывая список билетов, найти маршрут по порядку, используя данный список.
+    Вход:
+    «Berlin» -> «London»
+    «Tokyo» -> «Seoul»
+    «Mumbai» -> «Berlin»
+    «Seoul» -> «Mumbai»
+
+    Выход:
+    Tokyo->Seoul, Seoul->Mumbai, Mumbai->Berlin, Berlin->Lindon
+
+         */
+
+        Scanner scanner = new Scanner(System.in);
+        String start = scanner.nextLine();
+
+        Map<String, String> tickets = new HashMap<>();
+        tickets.put("Berlin", "London");
+        tickets.put("Tokyo", "Seoul");
+        tickets.put("Mumbai", "Berlin");
+        tickets.put("Seoul", "Mumbai");
+
+        System.out.println(findWay(start, tickets));
+
+
+
+    }
+    public static String findWay (String start, Map<String, String> tickets){
+        String result = "";
+        if (!tickets.containsKey(start)){
+            return "Stay home";
+        }
+        while (tickets.containsKey(start) && start!=null){
+            result = tickets.get(start);
+            start = tickets.get(result);
+        }
+        return "End of destination: " + result;
+
+    }
+}
