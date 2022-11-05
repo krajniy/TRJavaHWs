@@ -48,9 +48,9 @@ public class PracticeMap {
 
         while (tickets.containsKey(start) && start != null) {
             if (!sb.isEmpty()) {
-                sb.append(",");
+                sb.append(", ");
             }
-            sb.append(start).append("->").append(tickets.get(start)).append(" ");
+            sb.append(start).append("->").append(tickets.get(start));
             start = tickets.get(start);
 
 
