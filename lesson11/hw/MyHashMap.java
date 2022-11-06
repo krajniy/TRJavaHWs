@@ -15,7 +15,6 @@ public class MyHashMap<K, V> {
 
     int size = 0;
     float threshold;
-    float loadFactor;
     Node<K, V>[] table;
     int capacity;
 
@@ -48,7 +47,7 @@ public class MyHashMap<K, V> {
     }
 
     public V put(K key, V value) {
-        if (size + 1 >= threshold) {
+        if (size + 1 == threshold) {
             enlargeMap();
         }
 
@@ -57,6 +56,7 @@ public class MyHashMap<K, V> {
         if (table[index] == null) {
             table[index] = newNode;
             size++;
+            return null;
         } else {
             Node<K, V> head = table[index];
             while (head.next != null) {
@@ -75,8 +75,8 @@ public class MyHashMap<K, V> {
             head.next = newNode;
             size++;
 
+            return null; // т.к. не рассматриваем коллизии
         }
-        return null; // т.к. не рассматриваем коллизии
     }
 
     public V get(K key) {
@@ -124,7 +124,12 @@ public class MyHashMap<K, V> {
             }
         }
         table = newTable;
+        threshold = table.length * DEFAULT_LOAD_FACTOR;
+        capacity = table.length;
+        size = 0;
+
         list.forEach(e -> put(e.key, e.value));
+
 
     }
 

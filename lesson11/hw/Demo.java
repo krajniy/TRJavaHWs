@@ -1,7 +1,5 @@
 package TRJavaHWs.lesson11.hw;
 
-import java.util.Arrays;
-import java.util.HashMap;
 
 public class Demo {
     /*
@@ -39,6 +37,7 @@ public class Demo {
         System.out.println(myHashMap);
         System.out.println(myHashMap.size());
 
+
         myHashMap.put(1, "1");
         myHashMap.put(2, "2");
         myHashMap.put(3, "3");
@@ -55,6 +54,10 @@ public class Demo {
 
         System.out.println(myHashMap);
         System.out.println(myHashMap.get(16));
+        System.out.println(myHashMap.size());
+        System.out.println(myHashMap.capacity);
+
+
 
     }
 }
