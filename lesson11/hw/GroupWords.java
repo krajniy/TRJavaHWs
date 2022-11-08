@@ -69,7 +69,7 @@ public class GroupWords {
                 }
                 String str2 = String.valueOf(set2);
 
-                if (str1.length() == str2.length() && strings[i] != strings[j]) {
+                if (str1.length() == str2.length() && i != j) {
                     if (primitiveHash(str1) == primitiveHash(str2)) {
                         System.out.println(strings[j] + ", " + strings[i]);
                         i++;
