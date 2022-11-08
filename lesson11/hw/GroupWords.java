@@ -24,18 +24,16 @@ public class GroupWords {
 
     private static void groupWords(String[] strings) {
         Map<String, List<String>> map = new HashMap<>();
-        for(String s : strings){
+        for (String s : strings) {
             char[] chars = s.toCharArray();
             Arrays.sort(chars);
-
-//           Object[] chch = Stream.of(s.toCharArray()).distinct().toArray();
 
             Map<Character, String> sMap = new HashMap<>();
             for (int i = 0; i < chars.length; i++) {
                 sMap.put(chars[i], s);
             }
             StringBuilder sb = new StringBuilder();
-            for (Map.Entry<Character, String> pair : sMap.entrySet()){
+            for (Map.Entry<Character, String> pair : sMap.entrySet()) {
                 sb.append(pair.getKey());
             }
 
@@ -44,13 +42,13 @@ public class GroupWords {
             list.add(s);
             List<String> values = map.getOrDefault(str, list);
 
-            if (!values.contains(s)){
+            if (!values.contains(s)) {
                 values.add(s);
             }
             map.putIfAbsent(str, values);
 
         }
-        for (Map.Entry<String, List<String>> e : map.entrySet()){
+        for (Map.Entry<String, List<String>> e : map.entrySet()) {
             System.out.println(e.getValue());
 
         }
@@ -59,33 +57,24 @@ public class GroupWords {
 
     public static void findSameUniqChar(String[] strings) {
         for (int i = 0; i < strings.length; i++) {
+            Set<Character> set1 = new TreeSet<>();
+            for (int k = 0; k < strings[i].length(); k++) {
+                set1.add(strings[i].charAt(k));
+            }
+            String str1 = String.valueOf(set1);
             for (int j = 1; j < strings.length; j++) {
-                if (strings[i].length() == strings[j].length()) {
-                    if (primitiveHash(strings[i]) == primitiveHash(strings[j])) {
+                Set<Character> set2 = new TreeSet<>();
+                for (int k = 0; k < strings[j].length(); k++) {
+                    set2.add(strings[j].charAt(k));
+                }
+                String str2 = String.valueOf(set2);
+
+                if (str1.length() == str2.length() && strings[i] != strings[j]) {
+                    if (primitiveHash(str1) == primitiveHash(str2)) {
                         System.out.println(strings[j] + ", " + strings[i]);
                         i++;
                         break;
                     }
-                }
-                else {
-                   //TODO
-                    Set<Character> set1 = new TreeSet<>();
-                    Set<Character> set2 = new TreeSet<>();
-                    for (int k = 0; k < strings[i].length(); k++) {
-                        set1.add(strings[i].charAt(k));
-                    }
-                    for (int k = 0; k < strings[j].length(); k++) {
-                        set2.add(strings[j].charAt(k));
-                    }
-                    if (primitiveHash(strings[i]) == primitiveHash(strings[j])) {
-                        System.out.println(strings[i] + ", " + strings[j]);
-                        i++;
-                        break;
-                    }
-
-
-
-
                 }
             }
         }
