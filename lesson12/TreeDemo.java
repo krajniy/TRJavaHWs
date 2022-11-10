@@ -12,16 +12,22 @@ public class TreeDemo {
         myTree.put(4, "four");
         myTree.put(70, "seventy");
 
-        System.out.println(myTree.getEntry(40));
-        System.out.println(myTree.get(2));
-        System.out.println(myTree.size());
-
+//        System.out.println(myTree.getEntry(40));
+//        System.out.println(myTree.get(2));
+//        System.out.println(myTree.size());
+//
         TreeImpl.Iterator<Integer, String> iterator = myTree.iterator();
-
+//
         System.out.println(iterator.nodes);
+//
+//        while (iterator.hasNext()){
+//            System.out.println(iterator.next());
+//        }
 
-        while (iterator.hasNext()){
-            System.out.println(iterator.next());
+        System.out.println("2nd version of iterator");
+
+        while (iterator.hasNext2()){
+            System.out.println(iterator.next2());
         }
 
     }

@@ -134,10 +134,19 @@ public class TreeImpl<K, V> {
         List<Node<K, V>> nodes = new ArrayList<>();
         int index = 0;
 
+        private final ArrayDeque<Node<K, V>> stack = new ArrayDeque<>();
+        private Node<K, V> node;
+
+        private final Map<Node<K, V>, Boolean> map = new HashMap<>();
+
         public Iterator(TreeImpl<K, V> tree) {
             this.tree = tree;
             this.next = tree.root;
             this.nodes.addAll(collectAllNodes(next));
+
+            this.node = tree.root;
+
+
         }
 
         private Set<Node<K, V>> collectAllNodes(Node<K, V> next) {
@@ -162,8 +171,52 @@ public class TreeImpl<K, V> {
         }
 
         public boolean hasNext() {
-            return index<nodes.size();
+            return index < nodes.size();
         }
+
+        // Stack version
+
+        public Node<K, V> next2() {
+            if (!map.containsKey(node)) {
+                map.put(node, node.right == null);
+            }
+
+            if (node.left != null && stack.peek() != node) {
+                stack.push(node);
+                node = node.left;
+                return node;
+            }
+
+            if ((node.right != null)) {
+
+                if (stack.peek() != node && node.left == null) {
+                    stack.push(node);
+                }
+                if (!map.get(node)) {
+                    map.put(node, true);
+                    node = node.right;
+                    return node;
+                }
+            }
+
+//            Доработанный вариант
+            while (!stack.isEmpty() && map.get(stack.peek())) {
+                Node<K,V> tmp  = stack.pop();
+                node = stack.peek();
+                if (node == null){
+                    return tmp;
+                }
+
+            }
+            return node;
+        }
+
+        public boolean hasNext2() {
+//            return !stack.isEmpty() || (node.left != null || node.right != null);
+            return node != null;
+
+        }
+
 
     }
 
