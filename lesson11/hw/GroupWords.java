@@ -27,6 +27,7 @@ public class GroupWords {
         for (String s : strings) {
             char[] chars = s.toCharArray();
             Arrays.sort(chars);
+//            int[] chars1 = s.chars().distinct().toArray();
 
             Map<Character, String> sMap = new HashMap<>();
             for (int i = 0; i < chars.length; i++) {
