@@ -12,16 +12,16 @@ public class Main {
 
         Random random = new Random();
 
-        Supplier<Integer> integerSupplier = () -> (random.nextInt());
+        Supplier<Integer> integerSupplier = () -> random.nextInt();
         int i = integerSupplier.get();
 
-        Supplier<Double> doubleSupplier = () -> (random.nextDouble());
+        Supplier<Double> doubleSupplier = () -> random.nextDouble();
         double d = doubleSupplier.get();
 
-        Supplier<Long> longSupplier = () -> (random.nextLong());
+        Supplier<Long> longSupplier = random::nextLong;
         long l = longSupplier.get();
 
-        Supplier<Boolean> booleanSupplier = () -> random.nextBoolean();
+        Supplier<Boolean> booleanSupplier = random::nextBoolean;
         boolean b = booleanSupplier.get();
 
         System.out.println(i);
