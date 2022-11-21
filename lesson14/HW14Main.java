@@ -17,11 +17,13 @@ public class HW14Main {
         };
 
         Button button1 = action -> action.performAction();
-
         Button button2 = ButtonAction::performAction;
 
 
 
+
+//        Button b = new Button(); // через класс
+//        b.click(() -> System.out.println("Click!"));
 
     }
 }
