@@ -1,6 +1,7 @@
 package TRJavaHWs.lesson16;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -63,7 +64,7 @@ public class StreamPractice {
     public static List<String> sortReverseUnique(List<String> list){
         return list.stream()
                 .distinct()
-                .sorted(String::compareTo)
+                .sorted(Comparator.reverseOrder())
                 .collect(Collectors
                         .toList());
     }
