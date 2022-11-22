@@ -27,7 +27,8 @@ public class StreamPractice {
     public static int oddSumStream(List<Integer> list){
         return list.stream()
                 .filter(e -> e % 2 == 1)
-                .reduce(Integer::sum).get();
+                .reduce(Integer::sum)
+                .get();
     }
 
 
