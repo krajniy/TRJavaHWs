@@ -32,16 +32,22 @@ public class StreamPractice {
 
 
     public static int countOccurrences(List<String> list, String word){
-        return (int) list.stream().filter(word::equals).count();
+        return (int) list.stream()
+                .filter(word::equals)
+                .count();
     }
 
     public static int findMin(List<Integer> list){
-        return list.stream().min(Integer::compareTo).get();
+        return list.stream()
+                .min(Integer::compareTo)
+                .get();
 
     }
 
     public static int findMax(List<Integer> list){
-        return list.stream().max(Integer::compareTo).get();
+        return list.stream()
+                .max(Integer::compareTo)
+                .get();
 
     }
 
