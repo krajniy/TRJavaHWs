@@ -61,7 +61,11 @@ public class StreamPractice {
 
     //TODO: написать стрим, который отсортирует коллекцию в обратном порядке и удалит дубликаты
     public static List<String> sortReverseUnique(List<String> list){
-        return list.stream().distinct().sorted(String::compareTo).collect(Collectors.toList());
+        return list.stream()
+                .distinct()
+                .sorted(String::compareTo)
+                .collect(Collectors
+                        .toList());
     }
 
 
