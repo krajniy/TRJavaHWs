@@ -88,4 +88,15 @@ public class Product {
     public int hashCode() {
         return Objects.hash(id, name, category, price, orders);
     }
+
+    @Override
+    public String toString() {
+        return "Product{\n\t" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", category='" + category + '\'' +
+                ", price=" + price +
+                ", orders=" + orders +
+                "}";
+    }
 }
