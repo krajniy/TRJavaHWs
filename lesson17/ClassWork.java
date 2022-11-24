@@ -55,9 +55,8 @@ public class ClassWork {
                         .stream()
                         .filter(o -> o.getOrderDate().compareTo(LocalDate.of(2021, 2, 1)) >= 0)
                         .filter(o -> o.getOrderDate().compareTo(LocalDate.of(2021, 4, 1)) <= 0)
-                        .filter(o -> o.getCustomer().getTier() == 2)
-                        .count() >= 1)
-                        .collect(Collectors.toList());
+                        .anyMatch(o -> o.getCustomer().getTier() == 2))
+                .collect(Collectors.toList());
 
     }
 
