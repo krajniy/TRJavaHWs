@@ -1,5 +1,6 @@
 package TRJavaHWs.lesson17;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -8,10 +9,13 @@ public class ClassWork {
     private static List<Product> productsEx1;
     private static List<Order> ordersEx2;
     private static List<Product> productsEx3;
+    private static List<Product> productsEx4;
 
     public static void main(String[] args) {
 //       ex1().stream().forEach(System.out::println);
-       ex2().stream().forEach(System.out::println);
+//       ex2().stream().forEach(System.out::println);
+//        ex3().stream().forEach(System.out::println);
+        ex4().stream().forEach(System.out::println);
 
 
     }
@@ -28,8 +32,8 @@ public class ClassWork {
     private static List<Order> ex2() {
         fillDataEx2();
         return ordersEx2.stream()
-                .filter(o->o.getProducts()
-                        .stream().anyMatch(p->p.getCategory()
+                .filter(o -> o.getProducts()
+                        .stream().anyMatch(p -> p.getCategory()
                                 .equalsIgnoreCase("Baby")))
                 .collect(Collectors.toList());
     }
@@ -38,14 +42,24 @@ public class ClassWork {
     private static List<Product> ex3() {
         fillDataEx3();
         return productsEx3.stream()
-                .filter(p->p.getCategory().equalsIgnoreCase("Toys"))
-                .peek(p-> p.setPrice(p.getPrice() * 0.9))
+                .filter(p -> p.getCategory().equalsIgnoreCase("Toys"))
+                .peek(p -> p.setPrice(p.getPrice() * 0.9))
                 .collect(Collectors.toList());
     }
 
+    //TODO: Obtain a list of products ordered by customer of tier 2 between 01-Feb-2021 and 01-Apr-2021
+    private static List<Product> ex4() {
+        fillDataEx4();
+        return productsEx4.stream()
+                .filter(p -> p.getOrders()
+                        .stream()
+                        .filter(o -> o.getOrderDate().compareTo(LocalDate.of(2021, 2, 1)) >= 0)
+                        .filter(o -> o.getOrderDate().compareTo(LocalDate.of(2021, 4, 1)) <= 0)
+                        .filter(o -> o.getCustomer().getTier() == 2)
+                        .count() >= 1)
+                        .collect(Collectors.toList());
 
-
-
+    }
 
 
     private static void fillDataEx1() {
@@ -128,5 +142,56 @@ public class ClassWork {
         productsEx3.add(new Product(0, "11", "Food", 11200));
     }
 
+
+    private static void fillDataEx4() {
+        productsEx4 = new ArrayList<>();
+
+        productsEx4.add(new Product(0, "0", "Baby", 200));
+        productsEx4.add(new Product(0, "1", "Food", 30));
+        productsEx4.add(new Product(0, "2", "Food", 200));
+        productsEx4.add(new Product(0, "3", "Baby", 10));
+        productsEx4.add(new Product(0, "4", "Baby", 200));
+        productsEx4.add(new Product(0, "5", "Food", 250));
+        productsEx4.add(new Product(0, "6", "Food", 200));
+        productsEx4.add(new Product(0, "7", "Baby", 10));
+        productsEx4.add(new Product(0, "8", "Baby", 200));
+        productsEx4.add(new Product(0, "9", "Baby", 1200));
+        productsEx4.add(new Product(0, "10", "Food", 11200));
+        productsEx4.add(new Product(0, "11", "Food", 11200));
+        productsEx4.add(new Product(0, "12", "Food", 11200));
+        productsEx4.add(new Product(0, "13", "Food", 11200));
+        productsEx4.add(new Product(0, "14", "Food", 11200));
+        productsEx4.add(new Product(0, "15", "Food", 11200));
+
+        ordersEx2 = new ArrayList<>();
+
+        Customer c1 = new Customer(1, "Customer", 2);
+        Customer c2 = new Customer(2, "Customer", 2);
+        Customer c3 = new Customer(3, "Customer", 1);
+
+        Order o1 = new Order(1, LocalDate.of(2021, 2, 10), null, "status", c1); //+
+        Order o2 = new Order(2, LocalDate.of(2021, 3, 21), null, "status", c2); //+
+        Order o3 = new Order(3, LocalDate.of(2020, 2, 10), null, "status", c3); //-
+        Order o4 = new Order(4, LocalDate.of(2020, 12, 10), null, "status", c1); //-
+
+        // 0, 1, 4, 8, 9, 10, 11 15
+        productsEx4.get(0).setOrder(o1); //+
+        productsEx4.get(1).setOrder(o1); //+
+        productsEx4.get(2).setOrder(o3); //-
+        productsEx4.get(3).setOrder(o3); //-
+        productsEx4.get(4).setOrder(o2); //+
+        productsEx4.get(5).setOrder(o4); //-
+        productsEx4.get(6).setOrder(o3); //-
+        productsEx4.get(7).setOrder(o4); //-
+        productsEx4.get(8).setOrder(o2); //+
+        productsEx4.get(9).setOrder(o2); //+
+        productsEx4.get(10).setOrder(o1); //+
+        productsEx4.get(11).setOrder(o1); //+
+        productsEx4.get(12).setOrder(o4); //-
+        productsEx4.get(13).setOrder(o4); //-
+        productsEx4.get(14).setOrder(o3); //-
+        productsEx4.get(15).setOrder(o2); //+
+
+    }
 
 }
