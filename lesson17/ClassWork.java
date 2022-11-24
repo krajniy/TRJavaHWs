@@ -26,13 +26,11 @@ public class ClassWork {
     //TODO: Obtain a list of orders with products such that at least one of them belongs to category “Baby”
     private static List<Order> ex2() {
         fillDataEx2();
-        return (List<Order>) ordersEx2.stream()
+        return ordersEx2.stream()
                 .filter(o->o.getProducts()
                         .stream().anyMatch(p->p.getCategory()
                                 .equalsIgnoreCase("Baby")))
                 .collect(Collectors.toList());
-
-
 
     }
 
