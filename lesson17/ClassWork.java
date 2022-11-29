@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 public class ClassWork {
@@ -13,6 +14,8 @@ public class ClassWork {
     private static List<Product> productsEx4;
     private static List<Product> productsEx5;
     private static List<Order> ordersEx6;
+    private static List<Order> ordersEx7;
+
 
     public static void main(String[] args) {
 //       ex1().stream().forEach(System.out::println);
@@ -20,7 +23,8 @@ public class ClassWork {
 //        ex3().stream().forEach(System.out::println);
 //        ex4().stream().forEach(System.out::println);
 //        System.out.println(ex5());
-        ex6().stream().forEach(System.out::println);
+//        ex6().stream().forEach(System.out::println);
+        ex7().forEach(System.out::println);
 
 
     }
@@ -83,6 +87,18 @@ public class ClassWork {
         return ordersEx6.stream()
                 .sorted(Comparator.comparing(Order::getOrderDate).reversed())
                 .limit(3).toList();
+    }
+
+    // TODO: Get a list of orders which were ordered on 15-Mar-2021,
+    //  log the order records to the console and then return its product list
+
+    private static List<Product> ex7() {
+        fillDataEx7();
+        return ordersEx7.stream()
+                .filter(order -> order.getOrderDate().equals(LocalDate.of(2021, 3, 15)))
+                .peek(System.out::println)
+                .flatMap(o-> o.getProducts().stream())
+                .collect(Collectors.toList());
     }
 
 
@@ -254,5 +270,28 @@ public class ClassWork {
         ordersEx6.add(new Order(8, LocalDate.of(2022, 2, 9), null, "", null));
         ordersEx6.add(new Order(9, LocalDate.of(2022, 2, 1), null, "", null));
         ordersEx6.add(new Order(10, LocalDate.of(2022, 2, 28), null, "", null));
+    }
+
+    private static void fillDataEx7() {
+        ordersEx7 = new ArrayList<>();
+
+        ordersEx7.add(new Order(1, LocalDate.of(2021, 3, 1), null, "", null));
+        ordersEx7.add(new Order(2, LocalDate.of(2021, 3, 15), null, "", null));
+        ordersEx7.add(new Order(3, LocalDate.of(2021, 3, 1), null, "", null));
+        ordersEx7.add(new Order(4, LocalDate.of(2021, 3, 15), null, "", null));
+        ordersEx7.add(new Order(5, LocalDate.of(2021, 3, 15), null, "", null));
+        ordersEx7.add(new Order(6, LocalDate.of(2021, 3, 1), null, "", null));
+        ordersEx7.add(new Order(7, LocalDate.of(2021, 3, 1), null, "", null));
+        ordersEx7.add(new Order(8, LocalDate.of(2021, 3, 1), null, "", null));
+        ordersEx7.add(new Order(9, LocalDate.of(2021, 3, 15), null, "", null));
+        ordersEx7.add(new Order(10, LocalDate.of(2021, 3, 1), null, "", null));
+
+        for (Order o : ordersEx7) {
+            for (int i = 0; i < (new Random()).nextInt(10); i++) {
+                o.setProduct(new Product(
+                        i + 1, "Order-" + o.getId() + "-Product-" + (i + 1), "Book",
+                        (new Random()).nextDouble(2000)));
+            }
+        }
     }
 }
