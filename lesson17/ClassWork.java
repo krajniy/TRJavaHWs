@@ -66,9 +66,13 @@ public class ClassWork {
     // TODO: Get the cheapest product of “Books” category
     private static Product ex5() {
         fillDataEx5();
-        return productsEx5.stream()
+//        return productsEx5.stream()
+//                .filter(o->o.getCategory().equalsIgnoreCase("Book"))
+//                .min(Comparator.comparing(Product::getPrice)).get();
+        List<Product> list = productsEx5.stream()
                 .filter(o->o.getCategory().equalsIgnoreCase("Book"))
-                .min(Comparator.comparing(Product::getPrice)).get();
+                .sorted(Comparator.comparing(Product::getPrice)).toList();
+        return list.get(0);
     }
 
 
