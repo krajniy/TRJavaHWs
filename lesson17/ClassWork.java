@@ -12,13 +12,15 @@ public class ClassWork {
     private static List<Product> productsEx3;
     private static List<Product> productsEx4;
     private static List<Product> productsEx5;
+    private static List<Order> ordersEx6;
 
     public static void main(String[] args) {
 //       ex1().stream().forEach(System.out::println);
 //       ex2().stream().forEach(System.out::println);
 //        ex3().stream().forEach(System.out::println);
 //        ex4().stream().forEach(System.out::println);
-        System.out.println(ex5());
+//        System.out.println(ex5());
+        ex6().stream().forEach(System.out::println);
 
 
     }
@@ -70,9 +72,17 @@ public class ClassWork {
 //                .filter(o->o.getCategory().equalsIgnoreCase("Book"))
 //                .min(Comparator.comparing(Product::getPrice)).get();
         List<Product> list = productsEx5.stream()
-                .filter(o->o.getCategory().equalsIgnoreCase("Book"))
+                .filter(o -> o.getCategory().equalsIgnoreCase("Book"))
                 .sorted(Comparator.comparing(Product::getPrice)).toList();
         return list.get(0);
+    }
+
+    // TODO: Get the 3 most recent placed orders
+    private static List<Order> ex6() {
+        fillDataEx6();
+        return ordersEx6.stream()
+                .sorted(Comparator.comparing(Order::getOrderDate).reversed())
+                .limit(3).toList();
     }
 
 
@@ -227,5 +237,22 @@ public class ClassWork {
         productsEx5.add(new Product(0, "13", "Food", 11200));
         productsEx5.add(new Product(0, "14", "Food", 11200));
         productsEx5.add(new Product(0, "15", "Food", 11200));
+    }
+
+    private static void fillDataEx6() {
+        ordersEx6 = new ArrayList<>();
+
+        // 28 (10), 27 (5), 27 (2)
+
+        ordersEx6.add(new Order(1, LocalDate.of(2022, 2, 1), null, "", null));
+        ordersEx6.add(new Order(2, LocalDate.of(2022, 2, 27), null, "", null));
+        ordersEx6.add(new Order(3, LocalDate.of(2022, 2, 25), null, "", null));
+        ordersEx6.add(new Order(4, LocalDate.of(2022, 2, 13), null, "", null));
+        ordersEx6.add(new Order(5, LocalDate.of(2022, 2, 27), null, "", null));
+        ordersEx6.add(new Order(6, LocalDate.of(2022, 2, 7), null, "", null));
+        ordersEx6.add(new Order(7, LocalDate.of(2022, 2, 3), null, "", null));
+        ordersEx6.add(new Order(8, LocalDate.of(2022, 2, 9), null, "", null));
+        ordersEx6.add(new Order(9, LocalDate.of(2022, 2, 1), null, "", null));
+        ordersEx6.add(new Order(10, LocalDate.of(2022, 2, 28), null, "", null));
     }
 }
