@@ -66,6 +66,7 @@ public class ClassWork {
     private static Product ex5() {
         fillDataEx5();
         return productsEx5.stream()
+                .filter(o->o.getCategory().equalsIgnoreCase("Book"))
                 .min((o1, o2) -> o1.getPrice().compareTo(o2.getPrice())).get();
     }
 
