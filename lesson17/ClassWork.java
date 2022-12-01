@@ -15,6 +15,7 @@ public class ClassWork {
     private static List<Product> productsEx5;
     private static List<Order> ordersEx6;
     private static List<Order> ordersEx7;
+    private static List<Order> ordersEx8;
 
 
     public static void main(String[] args) {
@@ -24,7 +25,9 @@ public class ClassWork {
 //        ex4().stream().forEach(System.out::println);
 //        System.out.println(ex5());
 //        ex6().stream().forEach(System.out::println);
-        ex7().forEach(System.out::println);
+//        ex7().forEach(System.out::println);
+        System.out.println(ex8());;
+
 
 
     }
@@ -99,6 +102,18 @@ public class ClassWork {
                 .peek(System.out::println)
                 .flatMap(o-> o.getProducts().stream())
                 .collect(Collectors.toList());
+    }
+
+    //TODO: Calculate total lump sum of all orders placed in Feb 2021
+
+    private static double ex8(){
+        fillDataEx8();
+        return ordersEx8.stream()
+                .filter(o->o.getOrderDate().compareTo(LocalDate.of(2021, 2, 1)) >= 0)
+                .filter(o->o.getOrderDate().compareTo(LocalDate.of(2021, 3, 1)) < 0)
+                .flatMap(o -> o.getProducts().stream())
+                .mapToDouble(Product::getPrice).reduce(Double::sum).orElse(0);
+
     }
 
 
@@ -294,4 +309,29 @@ public class ClassWork {
             }
         }
     }
+    private static void fillDataEx8(){
+        ordersEx8 = new ArrayList<>();
+        ordersEx8.add(new Order(1, LocalDate.of(2021, 2, 1), null, "", null));
+        ordersEx8.add(new Order(2, LocalDate.of(2021, 3, 15), null, "", null));
+        ordersEx8.add(new Order(3, LocalDate.of(2021, 1, 1), null, "", null));
+        ordersEx8.add(new Order(4, LocalDate.of(2021, 4, 15), null, "", null));
+        ordersEx8.add(new Order(5, LocalDate.of(2021, 2, 15), null, "", null));
+        ordersEx8.add(new Order(6, LocalDate.of(2021, 2, 1), null, "", null));
+        ordersEx8.add(new Order(7, LocalDate.of(2021, 4, 1), null, "", null));
+        ordersEx8.add(new Order(8, LocalDate.of(2021, 3, 1), null, "", null));
+        ordersEx8.add(new Order(9, LocalDate.of(2021, 1, 15), null, "", null));
+        ordersEx8.add(new Order(10, LocalDate.of(2021, 2, 1), null, "", null));
+
+        for (Order o : ordersEx8){
+            for (int i = 0; i < (new Random()).nextInt(10); i++) {
+                o.setProduct(new Product(
+                        i+1, "Order-"+o.getId()+"-Product-"+(i+1), "Baby",
+                        (new Random()).nextDouble(1000)
+                ));
+            }
+        }
+
+    }
+
+
 }
