@@ -1,10 +1,9 @@
 package TRJavaHWs.lesson18;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Main {
+public class HWInClass {
 
     final static Scanner scanner = new Scanner(System.in);
 
