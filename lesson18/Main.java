@@ -46,35 +46,35 @@ public class Main {
                 returnMap = map;
             } else if (key instanceof String && value instanceof Integer) {                 // str - int
                 Map<String, Integer> map = new HashMap<>();
-                map.put(String.valueOf(key), Integer.parseInt(String.valueOf(value)));
+                map.put(String.valueOf(key), (Integer) value);
                 returnMap = map;
             } else if (key instanceof String && value instanceof Double) {                  //str - double
                 Map<String, Double> map = new HashMap<>();
-                map.put(String.valueOf(key), Double.parseDouble(String.valueOf(value)));
+                map.put(String.valueOf(key), (Double) value);
                 returnMap = map;
             } else if (key instanceof Double && value instanceof Double) {                  // double - double
                 Map<Double, Double> map = new HashMap<>();
-                map.put(Double.parseDouble(String.valueOf(key)), Double.parseDouble(String.valueOf(value)));
+                map.put((Double) key, (Double) value);
                 returnMap = map;
             } else if (key instanceof Double && value instanceof String) {                  // double - str
                 Map<Double, String> map = new HashMap<>();
-                map.put(Double.parseDouble(String.valueOf(key)), String.valueOf(value));
+                map.put((Double) key, String.valueOf(value));
                 returnMap = map;
             } else if (key instanceof Double && value instanceof Integer) {                 // double - int
                 Map<Double, Integer> map = new HashMap<>();
-                map.put(Double.parseDouble(String.valueOf(key)),Integer.parseInt(String.valueOf(value)));
+                map.put((Double) key ,(Integer) value);
                 returnMap = map;
             } else if (key instanceof Integer && value instanceof Integer) {                // int - int
                 Map<Integer, Integer> map = new HashMap<>();
-                map.put(Integer.parseInt(String.valueOf(key)), Integer.parseInt(String.valueOf(value)));
+                map.put( (Integer) key, (Integer) value);
                 returnMap = map;
             } else if (key instanceof Integer && value instanceof Double) {                 // int - double
                 Map<Integer, Double> map = new HashMap<>();
-                map.put(Integer.parseInt(String.valueOf(key)), Double.parseDouble(String.valueOf(value)));
+                map.put((Integer) key, (Double) value);
                 returnMap = map;
             } else {                                                                        // int - str
                 Map<Integer, String> map = new HashMap<>();
-                map.put(Integer.parseInt(String.valueOf(key)), String.valueOf(value));
+                map.put((Integer) key, String.valueOf(value));
                 returnMap = map;
             }
         }
