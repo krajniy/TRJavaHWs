@@ -1,6 +1,7 @@
 package TRJavaHWs.lesson20;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Random;
 import java.util.TreeSet;
 
@@ -29,6 +30,7 @@ public class Challenge {
 
     static int[] top(){
         return set.stream()
+                .sorted(Comparator.reverseOrder())
                 .limit(5)
                 .mapToInt(value -> value)
                 .toArray();
