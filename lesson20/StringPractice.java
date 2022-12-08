@@ -25,9 +25,9 @@ public class StringPractice {
 
         s = s.toLowerCase();
         for (int i = 0; i < s.length(); i++) {
-            if (map.get(s.charAt(i)) == 0){
+
                 map.computeIfPresent(s.charAt(i), (k, v)->v+1);
-            }
+
         }
         return map;
 
