@@ -11,7 +11,7 @@ public class StringPractice {
         String check = scanner.nextLine();
         scanner.close();
 
-        System.out.println(countEachLetter(check));
+        System.out.println(countEachLetter(check.toLowerCase()));
 
     }
     static Map<Character, Integer> countEachLetter(String s){
