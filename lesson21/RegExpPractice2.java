@@ -16,15 +16,11 @@ public class RegExpPractice2 {
     static void writePositionsString(String s) {
         Pattern p = Pattern.compile("tel");
 
-        int start = 0;
-        int end = 0;
         Matcher mS = p.matcher(s);
          while (mS.find()){
-        start = mS.start();
-        end = mS.end();
+             System.out.println("For the string " + s + "pattern found at positions from " + mS.start() + " to " + mS.end());
+
          }
 
-        //Вычислить start и end для первой и второй строк
-        System.out.println("For the string " + s + "pattern found at positions from " + start + " to " + end);
     }
 }
