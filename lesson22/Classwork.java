@@ -38,15 +38,19 @@ public class Classwork {
 
     }
 
-    public static <T  extends Number> boolean checkSimplicity(T element){
+    public static <T extends Number> boolean checkSimplicity(T element){
+        long n = (long) element.doubleValue();
+        if (n != element.doubleValue()){
+            return false;
+        }
 
-            for (int i = 2; i < (Integer) element; i++) {
-                if ((Integer) element % i == 0) {
+            for (int i = 2; i <= Math.sqrt(n); i++) {
+                if (n % i == 0) {
                     return false;
                 }
 
         }
-            return true;
+            return n != 1;
     }
 
 
