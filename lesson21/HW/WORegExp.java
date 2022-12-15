@@ -19,7 +19,6 @@ public class WORegExp {
             return s;
         }
         int count = 0;
-//        while (m.find() && sb.length() - count < s.length()-3){
         for (int i = 0; i < reversed.length()-3; i+=3) {
             sb.append(reversed.substring(i, i+3)).append(",");
             count++;
