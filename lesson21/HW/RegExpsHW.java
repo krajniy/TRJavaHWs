@@ -104,7 +104,26 @@ public class RegExpsHW {
         int dif = s.length() - (sb.length()-count);
         sb.append(reversed.substring(reversed.length()-dif));
 
-        return sb.reverse().toString();
+        return sb.reverse().toString().replaceAll(",$", "");
+
+    }
+
+    public static String setThousandSeparator2(String s) {
+
+        Pattern p = Pattern.compile("\\d{3}");
+        Matcher m = p.matcher(s);
+        StringBuilder res = new StringBuilder();
+
+        if (s.length() < 4) {
+            return s;
+        }
+
+        while (m.find()) {
+            res.append(m.group()).append(",");
+
+        }
+        return res.toString();
+
 
     }
 
