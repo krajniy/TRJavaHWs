@@ -75,13 +75,13 @@ public class RegExpsHW {
     }
 
     public static boolean endingQ(String s) {
-        Pattern p = Pattern.compile("\\w+q$");
+        Pattern p = Pattern.compile(".*p.*q$");
 
         return p.matcher(s).matches();
     }
 
     public static boolean upperAndLowerLettersNumsUnderscores(String s) {
-        Pattern p = Pattern.compile("(\\w|_)+", Pattern.CASE_INSENSITIVE);
+        Pattern p = Pattern.compile("(\\w|_)+$", Pattern.CASE_INSENSITIVE);
 
         return p.matcher(s).matches();
     }
