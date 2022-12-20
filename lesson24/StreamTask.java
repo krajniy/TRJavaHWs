@@ -74,7 +74,10 @@ public class StreamTask {
     public static void main(String[] args) {
         String newstr = Stream.of(StreamTask.text.split("\s"))
                 .map(s -> s.replaceAll("\\p{Punct}",""))
-                .filter(s -> !s.matches("^[A-Z]"))
+                .filter(s -> {
+                    char c = s.charAt(0);
+                    return Character.isUpperCase(c);
+                })
                 .filter(s->s.length()>3)
                 .map(String::toLowerCase)
                 .map(s->s.replace(s.substring(s.length()-2),s.substring(s.length()-2).toUpperCase()))
