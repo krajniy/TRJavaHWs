@@ -71,19 +71,60 @@ public class StreamTask {
     // Для решения данного задания нельзя использовать какие-либо циклы. Задание должно решаться через комбинацию стримов
     // и регулярок
 
+    static String finalStr = "lorEM-proIN-pellentesqUE-nulLA-vulputaTE-volutpAT-sodalES-etiAM-blandIT-tellUS-dictUM-nuNC-purUS-dignissIM-lectUS-niBH-arCU-feugiAT-mattIS-tempUS-habitasSE-aliquET-purUS-senectUS-velIT-adipisciNG-suspendisSE-ipsUM-habitasSE-augUE-lorEM-graviDA-auctOR-potenTI-aliquAM-scelerisqUE-interdUM-egestAS-crAS-enIM-niSI-blandIT-lectUS-diAM-malesuaDA-elIT-risUS-condimentUM-risUS-eleifeND-famES-dolOR-molestIE-vitAE-vivamUS-vitAE-risUS-masSA-aliquAM-tinciduNT-lorEM-libeRO";
+    static String firstCheck = "Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Proin sagittis nisl rhoncus mattis Pellentesque habitant morbi tristique senectus et netus et malesuada fames Id ornare arcu odio ut sem nulla Nulla facilisi nullam vehicula ipsum a arcu cursus vitae congue Vulputate ut pharetra sit amet aliquam id diam maecenas ultricies Volutpat est velit egestas dui id Sit amet dictum sit amet Sodales ut etiam sit amet nisl purus in Etiam tempor orci eu lobortis elementum Blandit cursus risus at ultrices mi Tellus pellentesque eu tincidunt tortor aliquam nulla facilisi In ornare quam viverra orci sagittis eu Dictum at tempor commodo ullamcorper a Nunc sed id semper risus in hendrerit gravida Purus non enim praesent elementum Dignissim sodales ut eu sem integer vitae justo eget Lectus nulla at volutpat diam ut venenatis Nibh sit amet commodo nulla facilisi nullam vehicula ipsum a Arcu bibendum at varius vel Feugiat sed lectus vestibulum mattis ullamcorper Mattis vulputate enim nulla aliquet porttitor lacus luctus accumsan Tempus quam pellentesque nec nam aliquam sem et tortor Habitasse platea dictumst quisque sagittis purus sit amet At erat pellentesque adipiscing commodo Aliquet sagittis id consectetur purus Et pharetra pharetra massa massa ultricies Purus in mollis nunc sed id semper risus in Senectus et netus et malesuada Velit dignissim sodales ut eu sem integer vitae Adipiscing at in tellus integer feugiat scelerisque Suspendisse interdum consectetur libero id faucibus nisl tincidunt eget Ipsum suspendisse ultrices gravida dictum fusce ut Habitasse platea dictumst quisque sagittis Augue mauris augue neque gravida in fermentum Lorem sed risus ultricies tristique nulla aliquet enim tortor at Gravida in fermentum et sollicitudin Auctor neque vitae tempus quam pellentesque nec nam aliquam sem Potenti nullam ac tortor vitae purus faucibus ornare suspendisse Aliquam ultrices sagittis orci a scelerisque purus semper Scelerisque varius morbi enim nunc faucibus a pellentesque sit Interdum consectetur libero id faucibus nisl tincidunt eget nullam non Egestas quis ipsum suspendisse ultrices gravida Cras adipiscing enim eu turpis Non pulvinar neque laoreet suspendisse interdum consectetur libero id faucibus Enim ut sem viverra aliquet eget sit amet Nisi est sit amet facilisismagna etiam tempor orci eu Blandit turpis cursus in hac habitasse platea dictumst quisque Lectus quam id leo in vitae turpis massa sed elementum Diam sit amet nisl suscipit adipiscing Sed faucibus turpis in eu Et netus et malesuada fames ac turpis egestas Malesuada proin libero nunc consequat interdum varius sit amet mattis Ut pharetra sit amet aliquam id diam maecenas Elit pellentesque habitant morbi tristique senectus Risus nec feugiat in fermentum At quis risus sed vulputate Condimentum vitae sapien pellentesque habitant morbi tristique senectus Risus feugiat in ante metus dictum at Eleifend quam adipiscing vitae proin sagittis nisl rhoncus Fames ac turpis egestas integer eget Dolor purus non enim praesent elementum facilisis leo vel fringilla Molestie at elementum eu facilisis sed odio morbi quis commodo Vitae justo eget magna fermentum iaculis eu non Vivamus at augue eget arcu dictum varius duis at Vitae ultricies leo integer malesuada nunc vel risus Risus pretium quam vulputate dignissim suspendisse in est ante in Massa enim nec dui nunc Aliquam ultrices sagittis orci a scelerisque purus Tincidunt vitae semper quis lectus nulla at Lorem ipsum dolor sit amet consectetur adipiscing elit ut aliquam Libero justo laoreet sit amet cursus sit amet dictum sit";
+    static String secondCheck = "Lorem Proin Pellentesque Id Nulla Vulputate Volutpat Sit Sodales Etiam Blandit Tellus In Dictum Nunc Purus Dignissim Lectus Nibh Arcu Feugiat Mattis Tempus Habitasse At Aliquet Et Purus Senectus Velit Adipiscing Suspendisse Ipsum Habitasse Augue Lorem Gravida Auctor Potenti Aliquam Scelerisque Interdum Egestas Cras Non Enim Nisi Blandit Lectus Diam Sed Et Malesuada Ut Elit Risus At Condimentum Risus Eleifend Fames Dolor Molestie Vitae Vivamus Vitae Risus Massa Aliquam Tincidunt Lorem Libero";
+    static String thirdCheck = "Lorem Proin Pellentesque Nulla Vulputate Volutpat Sodales Etiam Blandit Tellus Dictum Nunc Purus Dignissim Lectus Nibh Arcu Feugiat Mattis Tempus Habitasse Aliquet Purus Senectus Velit Adipiscing Suspendisse Ipsum Habitasse Augue Lorem Gravida Auctor Potenti Aliquam Scelerisque Interdum Egestas Cras Enim Nisi Blandit Lectus Diam Malesuada Elit Risus Condimentum Risus Eleifend Fames Dolor Molestie Vitae Vivamus Vitae Risus Massa Aliquam Tincidunt Lorem Libero";
+
     public static void main(String[] args) {
-        String newstr = Stream.of(StreamTask.text.split("\s"))
-                .map(s -> s.replaceAll("\\p{Punct}",""))
+
+
+        String newstr = Stream.of(text.split("\\s+"))
+                .map(s -> s.replaceAll("\\p{Punct}", ""))
                 .filter(s -> {
                     char c = s.charAt(0);
                     return Character.isUpperCase(c);
                 })
-                .filter(s->s.length()>3)
+                .filter(s -> s.length() > 3)
                 .map(String::toLowerCase)
-                .map(s->s.replace(s.substring(s.length()-2),s.substring(s.length()-2).toUpperCase()))
+                .map(s -> s.replace(s.substring(s.length() - 2), s.substring(s.length() - 2).toUpperCase()))
                 .collect(Collectors.joining("-"));
-        System.out.println(newstr);
 
+
+//        System.out.println(newstr);
+
+        checkAllSteps();
+
+
+    }
+
+    public static void checkAllSteps() {
+        String newstr = "";
+
+        newstr = Stream.of(text.split("\\s+"))
+                .map(s -> s.replaceAll("\\p{Punct}", ""))
+                .collect(Collectors.joining(" "));
+        System.out.println(newstr.equals(firstCheck));
+
+        newstr = Stream.of(text.split("\\s+"))
+                .map(s -> s.replaceAll("\\p{Punct}", ""))
+                .filter(s -> {
+                    char c = s.charAt(0);
+                    return Character.isUpperCase(c);
+                })
+                .collect(Collectors.joining(" "));
+
+        System.out.println(newstr.equals(secondCheck));
+
+        newstr = Stream.of(text.split("\\s+"))
+                .map(s -> s.replaceAll("\\p{Punct}", ""))
+                .filter(s -> {
+                    char c = s.charAt(0);
+                    return Character.isUpperCase(c);
+                })
+                .filter(s -> s.length() > 3)
+                .collect(Collectors.joining(" "));
+        System.out.println(newstr.equals(thirdCheck));
 
 
     }
