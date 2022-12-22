@@ -54,6 +54,7 @@ public class RegExpsHW {
 
         System.out.println(isMathExp(mathExp));
         System.out.println(isMathExp(notMathExp));
+        System.out.println(isMathExp("a + b / c + 66"));
 
 
 
@@ -139,7 +140,7 @@ public class RegExpsHW {
 
     public static boolean isMathExp(String s){
 
-        Pattern p = Pattern.compile("(\\-?\\w+\\s?[\\*\\/\\+\\-]\\s?\\w+)+");
+        Pattern p = Pattern.compile("(\\-?\\w+)(\\s?[\\*\\/\\+\\-]\\s?\\w+)+");
         Matcher m = p.matcher(s);
 
         return m.matches();
