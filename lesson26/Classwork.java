@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class Classwork {
     public static void main(String[] args) {
-        int[] array = new int[100_000];
+        int[] array = new int[100_000_000];
         Random random = new Random();
 
         for (int i = 0; i < array.length; i++) {
