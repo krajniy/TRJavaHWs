@@ -30,7 +30,10 @@ public class Classwork {
         for (int i = 0; i < n -1; i++) {
             int[] tmp = new int[step+1];
             System.arraycopy(arr, start, tmp, 0, step +1);
-            new Thread(() -> System.out.println(Arrays.stream(tmp).max().getAsInt())).start();
+            new Thread(() -> {
+                System.out.println(Arrays.stream(tmp).max().getAsInt());
+                System.out.println(Arrays.stream(tmp).min().getAsInt());
+            }).start();
             start+=step;
         }
 
