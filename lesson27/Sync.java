@@ -13,8 +13,11 @@ public class Sync {
 
         for (int i = 0; i < 4; i++) {
             (new Thread(() -> {
+                synchronized (inc){
+
                 for (int j = 0; j < 1000; j++) {
                     inc.increment();
+                }
                 }
 
             })).start();
@@ -28,7 +31,7 @@ public class Sync {
 }
 class Incrementer {
     private int count;
-     public synchronized void  increment() {
+     public void  increment() {
         count++;
     }
 
