@@ -14,6 +14,7 @@ public class PracticeThreads {
         Thread[] threads = new Thread[5];
 
         for (int i = 0; i < 5; i++) {
+            int finalI = i;
             threads[i] = new Thread(() -> {
 
                 long start = System.nanoTime();
@@ -24,7 +25,7 @@ public class PracticeThreads {
                         Thread.sleep(sleepTime);
                     } catch (InterruptedException e) {
                         sleepTime = (end - System.nanoTime()) / 1000000;
-                        System.out.println("Thread was awaken. Time remains: " + sleepTime);
+                        System.out.println("Thread " + finalI + " was awaken. Time remains: " + sleepTime);
                     }
                 }
                 System.out.println("Thread execution finished");
@@ -37,9 +38,7 @@ public class PracticeThreads {
         Thread daemon = new Thread(() -> {
             while (true) {
                 for (int i = 0; i < 5; i++) {
-                    if (threads[i].getState() == Thread.State.TIMED_WAITING) {
-                        threadsAreSleeping[i] = true;
-                    }
+                    threadsAreSleeping[i] = threads[i].getState() == Thread.State.TIMED_WAITING;
                 }
             }
 
