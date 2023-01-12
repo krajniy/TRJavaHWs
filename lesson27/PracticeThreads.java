@@ -35,9 +35,9 @@ public class PracticeThreads {
 
 
         Thread daemon = new Thread(() -> {
-            while (true){
-                for (int i = 0; i < 5; i++){
-                    if (threads[i].getState() == Thread.State.TIMED_WAITING){
+            while (true) {
+                for (int i = 0; i < 5; i++) {
+                    if (threads[i].getState() == Thread.State.TIMED_WAITING) {
                         threadsAreSleeping[i] = true;
                     }
                 }
@@ -47,11 +47,15 @@ public class PracticeThreads {
         daemon.setDaemon(true);
         daemon.start();
 
-        while (true) {
+        while (threads[0].getState() != Thread.State.TERMINATED
+                && threads[1].getState() != Thread.State.TERMINATED
+                && threads[2].getState() != Thread.State.TERMINATED
+                && threads[3].getState() != Thread.State.TERMINATED
+                && threads[4].getState() != Thread.State.TERMINATED) {
             try {
                 Thread.sleep(10);
                 for (int i = 0; i < 5; i++) {
-                    if (threadsAreSleeping[i]){
+                    if (threadsAreSleeping[i]) {
                         threads[i].interrupt();
                         threadsAreSleeping[i] = false;
                     }
@@ -61,8 +65,6 @@ public class PracticeThreads {
                 throw new RuntimeException(e);
             }
         }
-
-
 
 
     }
