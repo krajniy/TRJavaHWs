@@ -13,16 +13,16 @@ public class Main {
             for (int i = 0; i < 1000; i++) {
                 try {
                     Thread.sleep(10);
-                    synchronized (Main.class){
-                    b.incrementAndGet();
-                    a.incrementAndGet();
+                    synchronized (Main.class) {
+                        b.incrementAndGet();
+                        a.incrementAndGet();
                     }
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
 
 
-                }
+            }
         })).start();
 
         (new Thread(() -> {
@@ -31,28 +31,28 @@ public class Main {
                 try {
                     Thread.sleep(10);
 
-                    synchronized (Main.class){
-                    int a1 = a.get();
-                    int b1 = b.get();
-                    if (a1!=b1){
-                        System.out.println(a1 +" != "+b1);
-                        count++;
-                    }
+                    synchronized (Main.class) {
+                        int a1 = a.get();
+                        int b1 = b.get();
+                        if (a1 != b1) {
+                            System.out.println(a1 + " != " + b1);
+                            count++;
+                        }
                     }
                     System.out.println(a + " " + b);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-                }
+            }
             System.out.println(count);
         })).start();
 
 
     }
 
-    private void test(){
+    private void test() {
 
-        synchronized (this){
+        synchronized (this) {
 
         }
 

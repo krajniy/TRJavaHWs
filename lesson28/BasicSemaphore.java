@@ -3,25 +3,28 @@ package TRJavaHWs.lesson28;
 
 public class BasicSemaphore {
     private final TestSubject t = new TestSubject();
-    private boolean flag = true;
+    private int availableResources = 1;
+    private final Object lock = new Object();
 
-    public  TestSubject acquire() {
-        if (flag) {
-            flag = !flag;
-        return this.t;
-        } else {
-            try {
-                Thread.currentThread().wait();
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+    public TestSubject acquire() {
+        synchronized (lock) {
+            while (availableResources == 0) {
+                try {
+                    lock.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
+            availableResources--;
+            return t;
         }
-        throw new RuntimeException();
-
     }
 
-    public  void release() {
-        flag = true;
+    public void release() {
+        synchronized (lock) {
+            availableResources++;
+            lock.notify();
+        }
 
 
     }
@@ -53,14 +56,9 @@ class Runner {
                     t.test();
                 }
                 s.release();
-
             })).start();
         }
 
 
-        (new Thread(() -> {
-
-
-        })).start();
     }
 }
