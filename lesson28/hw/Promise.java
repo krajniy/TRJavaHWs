@@ -13,20 +13,21 @@ public class Promise<T> {
         return value;
     }
 
-    public void setValue(T value){
+    void setValue(T value){
         this.value = value;
     }
 }
 
+@FunctionalInterface
 interface Promisable<T>{
-    Promise<T> getPromise();
+    T getPromise();
 }
 
 class PromiseRunner{
     public <T> Promise<T> run(Promisable<T> promisable){
         Promise<T> promise = new Promise<>();
         (new Thread(()->{
-            T value = promisable.getPromise().getValue();
+            T value = promisable.getPromise();
             promise.setValue(value);
 
         })).start();
