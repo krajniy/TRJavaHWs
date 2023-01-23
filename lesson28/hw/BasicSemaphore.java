@@ -1,4 +1,4 @@
-package TRJavaHWs.lesson28;
+package TRJavaHWs.lesson28.hw;
 
 
 public class BasicSemaphore {
