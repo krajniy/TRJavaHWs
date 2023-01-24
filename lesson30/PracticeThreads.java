@@ -22,7 +22,6 @@ public class PracticeThreads {
 
 
         ExecutorService executorService = Executors.newFixedThreadPool(1);
-        Future[] futures = new Future[s.length()];
         for (int i = 0; i < s.length(); i++) {
             int finalI = i;
             executorService.submit(() -> {
