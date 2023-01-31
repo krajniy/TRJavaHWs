@@ -24,7 +24,6 @@ public class Stargate extends JPanel {
     private int gateY = 90;
 
     static boolean oneShipIsClose = false;
-    static boolean bothShipsAreRight = true;
 
     private void run() {
 
@@ -54,20 +53,22 @@ public class Stargate extends JPanel {
     private synchronized void openGate(Ship ship) {
         new Thread(() -> {
             while (true) {
-                if (gateX - ship.x <= 40 && ship.x <= gateX && gateY < GATE_OPEN_Y) {
+                if (gateX - ship.x <= 20 && ship.x <= gateX && gateY < GATE_OPEN_Y) {
 //                    gateY += (GATE_OPEN_Y - GATE_CLOSED_Y) / 10;
                     oneShipIsClose = true;
                 }
 
-                if (ship.x >= gateX + 15 && gateY > GATE_CLOSED_Y) {
+                if (ship.x >= gateX + 10 && gateY > GATE_CLOSED_Y) {
 //                    gateY -= (GATE_OPEN_Y - GATE_CLOSED_Y) / 10;
-                    bothShipsAreRight = false;
+                    oneShipIsClose = false;
                 }
                 
                 if (oneShipIsClose){
                     gateY = GATE_OPEN_Y;
                     oneShipIsClose = false;
-                } else if (bothShipsAreRight || (ships.get(0).x > gateX + 10 && ships.get(1).x > gateX + 10)) {
+                } else if (((ships.get(0).x > gateX + 15 || ships.get(1).x > gateX + 15) &&
+                        (ships.get(0).x < gateX - 100 || ships.get(1).x < gateX - 100)) ||
+                        (ships.get(0).x > gateX + 15 && ships.get(1).x > gateX + 15)) {
                     gateY = GATE_CLOSED_Y;
 
                 }
