@@ -18,20 +18,24 @@ public class Stargate extends JPanel {
     private void run() {
         new Thread(() -> {
             while (shipX < 400) {
-                shipX += 1;
+                shipX += 3;
                 sleep(30);
+                if (shipX >= 400) {
+                    shipX = 50;
+                }
             }
+
         }).start();
 
         new Thread(() -> {
-            while (true){
-            int distance = gateX - shipX;
+            while (true) {
+                int distance = gateX - shipX;
 
-            if (distance <= 10) {
-                gateY = GATE_OPEN_Y;
-            } else {
-                gateY = GATE_CLOSED_Y;
-            }
+                if (distance <= 10) {
+                    gateY = GATE_OPEN_Y;
+                } else {
+                    gateY = GATE_CLOSED_Y;
+                }
 
 //            sleep(1000/30);
             }
@@ -41,7 +45,7 @@ public class Stargate extends JPanel {
         new Thread(() -> {
             while (true) {
                 repaint();
-                sleep(1000/30);
+                sleep(1000 / 30);
             }
         }).start();
     }
@@ -62,7 +66,8 @@ public class Stargate extends JPanel {
     private void sleep(int millis) {
         try {
             Thread.sleep(millis);
-        } catch (InterruptedException ignored) {}
+        } catch (InterruptedException ignored) {
+        }
     }
 
     @Override
